@@ -75,13 +75,16 @@ const LederBoard = () => {
 
             useEffect(() => {
               projectFirestore.collection("data-hackers").get().then((snapshot) => {
-                snapshot.docs.forEach((oneData) => {
-                  console.log(oneData.data());
+                snapshot.docs.map((oneData) => {
+                  
+                  const { nickname , score } = oneData.data();
+                  console.log(nickname);
+                  console.log(score);
 
                   return (
                     <>
-                      <p className="text-white">Tet</p>
-                      <p>{oneData.data().score}</p>
+                      <p className="text-white">{nickname}</p>
+                      <p className="text-white">{score}</p>
                     </>
                   )
                 })
